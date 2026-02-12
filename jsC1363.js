@@ -21,7 +21,7 @@ function GetSolution(){
         isNaN(document.getElementById('special'))!=True &
         length(document.getElementById('nodes'))>=(n-1)*3
     ){
-    fetch('http://127.0.0.1:8000/', {
+    fetch('http://127.0.0.1:8000/task', {
         method: 'POST',
         credentials: "include",
         headers: {'X-CSRFToken': csrftoken},
