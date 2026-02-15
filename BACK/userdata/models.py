@@ -5,3 +5,6 @@ class UserInpSol(models.Model):
     csrftoken = models.CharField(default=1)
     inp = models.CharField()
     sol = models.CharField()
+
+    def __str__(self):
+        return str(self.inp)
