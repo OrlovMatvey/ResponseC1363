@@ -26,10 +26,11 @@ function GetSolution(){
         credentials: "include",
         headers: {'X-CSRFToken': csrftoken},
         body: JSON.stringify({
-            t: document.getElementById('iter'),
-            n: document.getElementById('count'), 
-            x: document.getElementById('special'), 
-            uv: document.getElementById('nodes')
+            't': document.getElementById('iter'),
+            'n': document.getElementById('count'), 
+            'x': document.getElementById('special'), 
+            'uv': document.getElementById('nodes'),
+            "csrftoken": csrftoken
         })
     })
 }

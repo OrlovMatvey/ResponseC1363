@@ -1,4 +1,7 @@
 from django.db import models
 
-# Create your models here.
-class 
+
+class UserInpSol(models.Model):
+    csrftoken = models.CharField(default=1)
+    inp = models.CharField()
+    sol = models.CharField()
