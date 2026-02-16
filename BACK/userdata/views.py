@@ -1,21 +1,21 @@
-from .models import UserInpSol
-from django.http import HttpResponse
 import json
+from django.http import HttpResponse
+from .models import UserInpSol
 
 
 def user_task(request):
-    A = []
+    data = []
     req = json.load(request)
     t = int(req['t'])
-    nl = list(req['n'].split(sep=' '))
-    xl = list(req['x'].split(sep=' '))
+    nl = list(map(int, req['n'].split(sep=' ')))
+    xl = list(map(int, req['x'].split(sep=' ')))
     uvl = list(req['uv'].split(sep=' '))
     csrftoken = req['csrftoken']
     res = UserInpSol.objects.filter(inp=req).exists()
     if res:
-        data = UserInpSol.objects.get(inp=req)
+        data = UserInpSol.objects.get(inp=[t, nl, xl, uvl])
     else:
-        for i in range(t-1):
+        for i in range(t):
             n, x = nl[i], xl[i]
             uv = uvl[i]
             if n > 1:
@@ -28,8 +28,7 @@ def user_task(request):
                         res = 'Ashish'
             else:
                 res = 'Ayush'
-            A.append(res)
-        data = A
-        new_row = UserInpSol(csrftoken=csrftoken, inp=req, sol=data)
+            data.append(res)
+        new_row = UserInpSol(csrftoken=csrftoken, inp=[t, nl, xl, uvl], sol=data)
         new_row.save()
     return HttpResponse(data)

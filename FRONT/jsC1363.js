@@ -16,22 +16,25 @@ const csrftoken = getCookie('csrftoken')
 console.log(csrftoken)
 
 function GetSolution(){
-    if (isNaN(document.getElementById('iter'))!=True &
-        isNaN(document.getElementById('count'))!=True &
-        isNaN(document.getElementById('special'))!=True &
-        length(document.getElementById('nodes'))>=(n-1)*3
+    if (isNaN(document.getElementById('iter'))!='True' &
+        isNaN(document.getElementById('count'))!='True' &
+        isNaN(document.getElementById('special'))!='True' &
+        isNaN(document.getElementById('nodes').length)!='True'
     ){
-    fetch('http://127.0.0.1:8000/task', {
-        method: 'POST',
-        credentials: "include",
-        headers: {'X-CSRFToken': csrftoken},
-        body: JSON.stringify({
-            't': document.getElementById('iter'),
-            'n': document.getElementById('count'), 
-            'x': document.getElementById('special'), 
-            'uv': document.getElementById('nodes'),
-            "csrftoken": csrftoken
+        fetch('http://127.0.0.1:8000/userdata/task', {
+            method: 'POST',
+            credentials: "include",
+            headers: {'X-CSRFToken': csrftoken},
+            body: JSON.stringify({
+                't': document.getElementById('iter').value,
+                'n': document.getElementById('count').value, 
+                'x': document.getElementById('special').value, 
+                'uv': document.getElementById('nodes').value,
+                "csrftoken": csrftoken
+            })
         })
-    })
 }
+    else{
+        alert('Некорректные входные данные!')
+    }
 }
