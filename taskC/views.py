@@ -1,6 +1,13 @@
 import json
 from django.http import HttpResponse
 from .models import UserInpSol
+from django.shortcuts import render
+
+
+
+
+def get_page(request):
+    return render(request, 'index.html')
 
 
 def user_task(request):
