@@ -1,6 +1,7 @@
 /* Глобальные свойства */
 html{
-  background-image: url(png/background.png);
+  background-image: url(http://127.0.0.1:8000/static/png/Background.png);
+  background-color: rgb(220, 204, 204);
 }
 .container-dark-flex{
   display: flex;
@@ -82,7 +83,7 @@ html{
   justify-self: center;
   padding: 15px 30px;
   border-radius: 50px;
-  background-color:#0C3666;
+  background-color:#373b3f;
   margin: 50px 0px;
 }
 table, th, td ,tr{
