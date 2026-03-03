@@ -1,4 +1,9 @@
 /* Глобальные свойства */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
 html{
   background-image: url(http://127.0.0.1:8000/static/png/Background.png);
   background-color: rgb(220, 204, 204);
