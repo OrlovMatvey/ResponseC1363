@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import UserInpSol
+from .models import UserTasks
 
-admin.site.register(UserInpSol)
+admin.site.register(UserTasks)
