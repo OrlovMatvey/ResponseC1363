@@ -1,5 +1,5 @@
 import json
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .models import UserInpSol
 from django.shortcuts import render
 
@@ -9,7 +9,7 @@ def get_page(request):
 
 
 def user_task(request):
-    data = []
+    data = {}
     req = json.load(request)
     t = int(req['t'])
     nl = list(map(int, req['n'].split(sep=' ')))
@@ -33,7 +33,7 @@ def user_task(request):
                         res = 'Ashish'
             else:
                 res = 'Ayush'
-            data.append(res)
+            data[f'{len(data)+1}']=res
         new_row = UserInpSol(csrftoken=csrftoken, inp=[t, nl, xl, uvl], sol=data)
         new_row.save()
-    return HttpResponse(data)
+    return JsonResponse(data)

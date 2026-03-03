@@ -12,6 +12,7 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+
 const csrftoken = getCookie('csrftoken')
 console.log(csrftoken)
 
@@ -21,7 +22,7 @@ function GetSolution(){
         isNaN(document.getElementById('special'))!='True' &
         isNaN(document.getElementById('nodes').length)!='True'
     ){
-        fetch('http://127.0.0.1:8000/userdata/task', {
+        fetch('http://127.0.0.1:8000/taskC/task', {
             method: 'POST',
             credentials: "include",
             headers: {'X-CSRFToken': csrftoken},
@@ -32,6 +33,13 @@ function GetSolution(){
                 'uv': document.getElementById('nodes').value,
                 "csrftoken": csrftoken
             })
+        })
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+            console.log(data)
+            document.getElementById('answer').textContent=Object.values(JSON.parse(JSON.stringify(data)))
         })
 }
     else{
