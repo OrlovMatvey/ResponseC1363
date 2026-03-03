@@ -12,9 +12,9 @@ def user_task(request):
     data = {}
     req = json.load(request)
     t = int(req["t"])
-    nl = list(map(int, req["n"].split(sep=" ")))
-    xl = list(map(int, req["x"].split(sep=" ")))
-    uvl = list(req["uv"].split(sep=" "))
+    nl = list(map(int, req["n"].strip().split(sep=" ")))
+    xl = list(map(int, req["x"].strip().split(sep=" ")))
+    uvl = list(req["uv"].strip().split(sep=" "))
     csrftoken = req["csrftoken"]
     res = UserTasks.objects.filter(inp=[t, nl, xl, uvl])
     print(res)

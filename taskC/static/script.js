@@ -43,6 +43,7 @@ function GetSolution(){
             }
         })
         .then((data) => {
+            document.getElementById("answer").style.display="block"
             document.getElementById("answer").textContent=Object.values(JSON.parse(JSON.stringify(data)))
         })
 }
